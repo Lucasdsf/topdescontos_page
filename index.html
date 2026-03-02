@@ -16,7 +16,6 @@
       --orange: #f97316;
       --orange-dark: #ea580c;
       --orange-light: #fb923c;
-      --orange-glow: rgba(249, 115, 22, 0.18);
       --red: #ef4444;
       --green: #22c55e;
       --purple: #a78bfa;
@@ -27,14 +26,12 @@
       --card2: #151c28;
 
       --border: rgba(255, 255, 255, 0.07);
-      --border-active: rgba(249, 115, 22, 0.4);
 
       --text: #eef1f6;
       --text-muted: #8695aa;
       --text-light: #4d5e73;
 
       --shadow-sm: 0 1px 3px rgba(0,0,0,0.6);
-      --shadow-md: 0 4px 20px rgba(0,0,0,0.5);
       --shadow-lg: 0 16px 48px rgba(0,0,0,0.7);
       --shadow-card-hover: 0 0 0 1px rgba(249,115,22,0.35), 0 16px 40px rgba(0,0,0,0.6), 0 0 40px rgba(249,115,22,0.05);
 
@@ -123,7 +120,7 @@
       padding: 11px 24px;
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
     }
 
     .logo {
@@ -200,6 +197,30 @@
       gap: 8px;
       flex-shrink: 0;
       margin-left: auto;
+    }
+
+    .wa-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #fff;
+      text-decoration: none;
+      border-radius: var(--radius-sm);
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      transition: opacity 0.15s, box-shadow 0.15s;
+      box-shadow: 0 4px 14px rgba(34,197,94,0.25);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .wa-btn:hover {
+      opacity: 0.9;
+      box-shadow: 0 6px 20px rgba(34,197,94,0.35);
     }
 
     .live-badge {
@@ -298,47 +319,11 @@
     .controls-bar {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 10px;
+      justify-content: flex-end;
       margin-bottom: 16px;
     }
 
-    .controls-left {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .controls-right {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .stat { display: flex; align-items: center; gap: 5px; font-size: 12.5px; font-weight: 500; color: var(--text-muted); }
-    .stat strong { color: var(--text); font-weight: 700; }
-
-    .refresh-btn {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      font-family: inherit;
-      font-size: 12.5px;
-      font-weight: 500;
-      color: var(--text-light);
-      padding: 0;
-      transition: color 0.15s;
-    }
-
-    .refresh-btn:hover { color: var(--orange); }
-
-    .sort-select, .price-input {
+    .sort-select {
       background: var(--card);
       border: 1.5px solid var(--border);
       border-radius: var(--radius-sm);
@@ -347,29 +332,22 @@
       font-size: 13px;
       font-weight: 500;
       letter-spacing: -0.01em;
-      padding: 8px 12px;
+      padding: 8px 30px 8px 12px;
       outline: none;
       cursor: pointer;
       transition: border-color 0.15s, box-shadow 0.15s;
-    }
-
-    .sort-select:focus, .price-input:focus {
-      border-color: rgba(249,115,22,0.45);
-      box-shadow: 0 0 0 3px rgba(249,115,22,0.08);
-    }
-
-    .sort-select {
-      padding-right: 30px;
       appearance: none;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%234d5e73' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
       background-position: right 12px center;
     }
 
-    .price-input { width: 140px; }
-    .price-input::placeholder { color: var(--text-light); }
+    .sort-select:focus {
+      border-color: rgba(249,115,22,0.45);
+      box-shadow: 0 0 0 3px rgba(249,115,22,0.08);
+    }
 
-    /* ── CATEGORIES ── */
+    /* ── MARKETPLACE PILLS ── */
     .cats-wrap {
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
@@ -497,45 +475,17 @@
     /* ── LIST ── */
     .list { display: flex; flex-direction: column; gap: 10px; }
 
-    .list .card {
-      flex-direction: row;
-      height: 100px;
-    }
-
-    .list .card-img {
-      width: 100px;
-      height: 100px;
-      aspect-ratio: unset;
-      flex-shrink: 0;
-      border-radius: 0;
-    }
-
-    .list .card-body {
-      flex-direction: row;
-      align-items: center;
-      gap: 12px;
-      padding: 10px 14px;
-      flex-wrap: wrap;
-    }
-
+    .list .card { flex-direction: row; height: 100px; }
+    .list .card-img { width: 100px; height: 100px; aspect-ratio: unset; flex-shrink: 0; border-radius: 0; }
+    .list .card-body { flex-direction: row; align-items: center; gap: 12px; padding: 10px 14px; flex-wrap: wrap; }
     .list .card-info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
-
     .list .card-cat { font-size: 10px; }
     .list .card-title { -webkit-line-clamp: 2; font-size: 13px; flex: unset; }
-
     .list .card-prices { flex-direction: row; align-items: baseline; gap: 8px; flex-shrink: 0; }
     .list .price-promo { font-size: 18px; }
     .list .price-saving { display: none; }
-
-    .list .card-footer {
-      padding: 0 14px 0 0;
-      display: flex;
-      align-items: center;
-      flex-shrink: 0;
-    }
-
+    .list .card-footer { padding: 0 14px 0 0; display: flex; align-items: center; flex-shrink: 0; }
     .list .btn-ver { width: auto; padding: 8px 16px; white-space: nowrap; }
-
     .list .share-btn { display: none; }
 
     /* ── CARD ── */
@@ -599,20 +549,6 @@
       border-radius: 999px;
       letter-spacing: 0.1px;
       box-shadow: 0 2px 8px rgba(239,68,68,0.4);
-    }
-
-    .badge-new {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      background: linear-gradient(135deg, #22c55e, #16a34a);
-      color: #fff;
-      font-size: 9.5px;
-      font-weight: 700;
-      padding: 3px 8px;
-      border-radius: 999px;
-      letter-spacing: 0.4px;
-      box-shadow: 0 2px 8px rgba(34,197,94,0.4);
     }
 
     .badge-time {
@@ -787,15 +723,7 @@
     }
 
     .cupom-ghost-icon { font-size: 32px; }
-
-    .cupom-ghost-code {
-      background: var(--card2);
-      border: 1.5px dashed var(--border);
-      border-radius: var(--radius-xs);
-      width: 100%;
-      height: 28px;
-    }
-
+    .cupom-ghost-code { background: var(--card2); border: 1.5px dashed var(--border); border-radius: var(--radius-xs); width: 100%; height: 28px; }
     .cupom-ghost-bar { height: 9px; border-radius: 999px; background: var(--border); width: 75%; }
     .cupom-ghost-bar.s { width: 50%; }
 
@@ -964,14 +892,11 @@
     }
 
     @media (max-width: 768px) {
-      .header-inner { padding: 10px 16px; gap: 10px; }
+      .header-inner { padding: 10px 16px; gap: 8px; }
       .logo-name { display: none; }
       .live-badge { padding: 5px 9px 5px 8px; }
       .live-badge span { display: none; }
-      .controls-bar { gap: 8px; }
-      .controls-right { width: 100%; justify-content: space-between; }
-      .sort-select { flex: 1; }
-      .price-input { flex: 1; width: auto; }
+      .wa-btn-text { display: none; }
       .hero-grid { grid-template-columns: repeat(2, 1fr); }
       .grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
       main { padding: 14px 16px 48px; }
@@ -1018,6 +943,9 @@
     </div>
 
     <div class="header-right">
+      <a class="wa-btn" href="https://chat.whatsapp.com/ECEj63J60uKFTL0e4Oz0RV" target="_blank" rel="noopener noreferrer">
+        📲 <span class="wa-btn-text">Entrar no grupo</span>
+      </a>
       <div class="live-badge">
         <div class="live-dot active" id="live-dot"></div>
         <span id="live-text">Carregando…</span>
@@ -1034,22 +962,12 @@
 
 <main>
   <div class="controls-bar" id="controls-bar">
-    <div class="controls-left">
-      <div class="stat">🛍️ <strong id="stat-count">–</strong> ofertas</div>
-      <div class="stat">⏱️ <strong id="stat-time">–</strong></div>
-      <button class="refresh-btn" id="refresh-btn">
-        🔄 <strong id="countdown">30s</strong>
-      </button>
-    </div>
-    <div class="controls-right">
-      <input class="price-input" id="max-preco" type="number" min="0" step="10" placeholder="Preço máx R$" />
-      <select class="sort-select" id="sort-select">
-        <option value="recentes">⏱ Mais recentes</option>
-        <option value="desconto">🔥 Maior desconto</option>
-        <option value="menor-preco">💰 Menor preço</option>
-        <option value="maior-economia">💸 Maior economia</option>
-      </select>
-    </div>
+    <select class="sort-select" id="sort-select">
+      <option value="recentes">⏱ Mais recentes</option>
+      <option value="desconto">🔥 Maior desconto</option>
+      <option value="menor-preco">💰 Menor preço</option>
+      <option value="maior-economia">💸 Maior economia</option>
+    </select>
   </div>
 
   <div class="cats-wrap">
@@ -1072,11 +990,11 @@
           <img src="IMG_7945.JPEG" alt="Top Descontos" />
           <span>TopDescontos</span>
         </a>
-        <p>As melhores promoções da internet, selecionadas e enviadas direto no seu WhatsApp. Economize todo dia!</p>
+        <p>As melhores promoções da internet, selecionadas e entregues direto para você. Economize todo dia!</p>
       </div>
 
       <div>
-        <div class="footer-col-title">Categorias</div>
+        <div class="footer-col-title">Marketplaces</div>
         <div class="footer-links-list" id="footer-cats">
           <span class="footer-link" style="color:var(--text-light)">Carregando…</span>
         </div>
@@ -1085,10 +1003,9 @@
       <div>
         <div class="footer-col-title">Informações</div>
         <div class="footer-links-list">
-          <span class="footer-link">🔥 Ofertas atualizadas a cada 30s</span>
           <span class="footer-link">✅ Todas as ofertas são verificadas</span>
           <span class="footer-link">🔗 Links verificados e seguros</span>
-          <span class="footer-link">📲 Receba no WhatsApp — entre em contato</span>
+          <span class="footer-link">📲 <a href="https://chat.whatsapp.com/ECEj63J60uKFTL0e4Oz0RV" target="_blank" rel="noopener noreferrer">Entrar no grupo de ofertas</a></span>
         </div>
       </div>
 
@@ -1103,9 +1020,7 @@
 </footer>
 
 <script>
-  const API      = 'https://n8n-homelab.tail40366a.ts.net';
-  const INTERVAL = 30;
-  const NEW_MS   = 2 * 3600 * 1000; // 2 horas = "novo"
+  const API = 'https://n8n-homelab.tail40366a.ts.net';
 
   let PER_PAGE = 24;
 
@@ -1131,22 +1046,16 @@
       cols = Math.max(1, Math.floor((containerW + gap) / (220 + gap)));
     }
 
-    // Arredonda 24 para o próximo múltiplo exato de cols
     return Math.ceil(24 / cols) * cols;
   }
 
-  let all        = [];
-  let catAtiva   = 'todas';
-  let busca      = '';
-  let maxPreco   = null;
-  let ordenacao  = 'recentes';
-  let viewMode   = 'grid';
-  let abaAtiva   = 'ofertas';
-  let page       = 1;
-  let countdown  = INTERVAL;
-  let timer      = null;
-  let firstLoad  = true;
-  let prevIds    = new Set();
+  let all       = [];
+  let catAtiva  = 'todas';
+  let busca     = '';
+  let ordenacao = 'recentes';
+  let viewMode  = 'grid';
+  let abaAtiva  = 'ofertas';
+  let page      = 1;
 
   /* ── UTILS ── */
   const brl = v =>
@@ -1155,9 +1064,9 @@
   function relTime(iso) {
     if (!iso) return '';
     const s = Math.floor((Date.now() - new Date(iso)) / 1000);
-    if (s < 60)   return `há ${s}s`;
-    if (s < 3600) return `há ${Math.floor(s/60)}min`;
-    if (s < 86400)return `há ${Math.floor(s/3600)}h`;
+    if (s < 60)    return `há ${s}s`;
+    if (s < 3600)  return `há ${Math.floor(s/60)}min`;
+    if (s < 86400) return `há ${Math.floor(s/3600)}h`;
     return `há ${Math.floor(s/86400)}d`;
   }
 
@@ -1166,8 +1075,6 @@
     d.appendChild(document.createTextNode(s || ''));
     return d.innerHTML;
   }
-
-  const isNew = iso => iso && (Date.now() - new Date(iso)) < NEW_MS;
 
   /* ── TOAST ── */
   function showToast(msg, duration = 3000) {
@@ -1192,7 +1099,7 @@
       const raw = localStorage.getItem('td_cache');
       if (!raw) return null;
       const { ts, data } = JSON.parse(raw);
-      if (Date.now() - ts > 5 * 60 * 1000) return null; // 5 min expiry
+      if (Date.now() - ts > 5 * 60 * 1000) return null;
       return data;
     } catch { return null; }
   }
@@ -1231,13 +1138,13 @@
     b.addEventListener('click', () => setAba(b.dataset.tab))
   );
 
-  /* ── FOOTER CATS ── */
+  /* ── FOOTER MARKETPLACES ── */
   function renderFooterCats() {
-    const cats = [...new Set(all.map(o => o.categoria).filter(Boolean))].sort();
+    const markets = [...new Set(all.map(o => o.marketplace).filter(Boolean))].sort();
     const el = document.getElementById('footer-cats');
     if (!el) return;
-    el.innerHTML = cats.slice(0, 6).map(c =>
-      `<button class="footer-link" onclick="catAtiva='${esc(c)}';renderCats();render(true);window.scrollTo({top:0,behavior:'smooth'})">${c}</button>`
+    el.innerHTML = markets.slice(0, 6).map(m =>
+      `<button class="footer-link" onclick="catAtiva='${esc(m)}';renderCats();render(true);window.scrollTo({top:0,behavior:'smooth'})">${m}</button>`
     ).join('');
   }
 
@@ -1254,34 +1161,28 @@
     render(true);
   });
 
-  /* ── PRICE FILTER ── */
-  document.getElementById('max-preco').addEventListener('input', e => {
-    maxPreco = e.target.value ? parseFloat(e.target.value) : null;
-    render(true);
-  });
-
   /* ── SEARCH ── */
   document.getElementById('search').addEventListener('input', e => {
     busca = e.target.value;
     if (abaAtiva === 'ofertas') render(true);
   });
 
-  /* ── CATEGORIES ── */
+  /* ── MARKETPLACE PILLS ── */
   function renderCats() {
     const counts = all.reduce((acc, o) => {
-      if (o.categoria) acc[o.categoria] = (acc[o.categoria] || 0) + 1;
+      if (o.marketplace) acc[o.marketplace] = (acc[o.marketplace] || 0) + 1;
       return acc;
     }, {});
-    const cats = Object.keys(counts).sort();
+    const markets = Object.keys(counts).sort();
     const total = all.length;
 
     document.getElementById('cats').innerHTML = [
       `<button class="cat-btn ${catAtiva === 'todas' ? 'active' : ''}" data-cat="todas">
         Todas <span class="cat-count">${total}</span>
        </button>`,
-      ...cats.map(c =>
-        `<button class="cat-btn ${catAtiva === c ? 'active' : ''}" data-cat="${esc(c)}">
-          ${esc(c)} <span class="cat-count">${counts[c]}</span>
+      ...markets.map(m =>
+        `<button class="cat-btn ${catAtiva === m ? 'active' : ''}" data-cat="${esc(m)}">
+          ${esc(m)} <span class="cat-count">${counts[m]}</span>
          </button>`
       )
     ].join('');
@@ -1332,19 +1233,19 @@
   function sortList(list) {
     const arr = [...list];
     switch (ordenacao) {
-      case 'desconto':    return arr.sort((a, b) => (b.desconto||0) - (a.desconto||0));
-      case 'menor-preco': return arr.sort((a, b) => a.preco_promocional - b.preco_promocional);
+      case 'desconto':       return arr.sort((a, b) => (b.desconto||0) - (a.desconto||0));
+      case 'menor-preco':    return arr.sort((a, b) => a.preco_promocional - b.preco_promocional);
       case 'maior-economia': return arr.sort((a, b) =>
         (b.preco_original - b.preco_promocional) - (a.preco_original - a.preco_promocional));
-      default: return arr; // API já retorna por data
+      default: return arr;
     }
   }
 
   /* ── CARD HTML ── */
   function cardHtml(o, rank) {
-    const hasImg  = o.imagem && o.imagem.startsWith('http');
-    const disc    = o.desconto ? Math.abs(o.desconto) : 0;
-    const saving  = o.preco_original > o.preco_promocional
+    const hasImg = o.imagem && o.imagem.startsWith('http');
+    const disc   = o.desconto ? Math.abs(o.desconto) : 0;
+    const saving = o.preco_original > o.preco_promocional
       ? o.preco_original - o.preco_promocional : 0;
 
     const imgEl = hasImg
@@ -1352,19 +1253,18 @@
              onerror="this.parentElement.innerHTML='<div class=no-img><span class=no-img-icon>📦</span><span>Sem imagem</span></div>'" />`
       : `<div class="no-img"><span class="no-img-icon">📦</span><span>Sem imagem</span></div>`;
 
-    const rankBadge    = rank ? `<div class="hero-rank">${rank}</div>` : '';
-    const discBadge    = disc > 0 ? `<div class="badge-discount">-${disc}%</div>` : '';
-    const newBadge     = isNew(o.data_coleta) ? `<div class="badge-new">NOVO</div>` : '';
-    const timeBadge    = o.data_coleta ? `<div class="badge-time">${relTime(o.data_coleta)}</div>` : '';
-    const shareBtn     = `<button class="share-btn" onclick="event.preventDefault();_share('${esc(o.titulo)}','${esc(o.link_afiliado)}')" title="Compartilhar">↗</button>`;
-    const priceOrig    = o.preco_original > o.preco_promocional
+    const rankBadge = rank ? `<div class="hero-rank">${rank}</div>` : '';
+    const discBadge = disc > 0 ? `<div class="badge-discount">-${disc}%</div>` : '';
+    const timeBadge = o.data_coleta ? `<div class="badge-time">${relTime(o.data_coleta)}</div>` : '';
+    const shareBtn  = `<button class="share-btn" onclick="event.preventDefault();_share('${esc(o.titulo)}','${esc(o.link_afiliado)}')" title="Compartilhar">↗</button>`;
+    const priceOrig = o.preco_original > o.preco_promocional
       ? `<div class="price-orig">${brl(o.preco_original)}</div>` : '';
-    const precoNum     = brl(o.preco_promocional).replace(/R\$\s?/, '');
-    const savingTxt    = saving > 0 ? `<div class="price-saving">Economia de ${brl(saving)}</div>` : '';
+    const precoNum  = brl(o.preco_promocional).replace(/R\$\s?/, '');
+    const savingTxt = saving > 0 ? `<div class="price-saving">Economia de ${brl(saving)}</div>` : '';
 
     const bodyContent = viewMode === 'list'
       ? `<div class="card-info">
-           <div class="card-cat">${esc(o.categoria || '')}</div>
+           <div class="card-cat">${esc(o.marketplace || o.categoria || '')}</div>
            <div class="card-title">${esc(o.titulo)}</div>
          </div>
          <div class="card-prices">
@@ -1372,7 +1272,7 @@
            <div class="price-promo"><small>R$</small>${precoNum}</div>
            ${disc > 0 ? `<div class="badge-discount" style="position:static;font-size:11px">-${disc}%</div>` : ''}
          </div>`
-      : `<div class="card-cat">${esc(o.categoria || '')}</div>
+      : `<div class="card-cat">${esc(o.marketplace || o.categoria || '')}</div>
          <div class="card-title">${esc(o.titulo)}</div>
          <div class="card-prices">
            ${priceOrig}
@@ -1385,7 +1285,6 @@
         <div class="card-img">
           ${imgEl}
           ${rankBadge}
-          ${newBadge}
           ${discBadge}
           ${timeBadge}
           ${shareBtn}
@@ -1402,7 +1301,7 @@
   /* ── HERO ── */
   function renderHero(list) {
     const heroEl = document.getElementById('hero');
-    const showHero = catAtiva === 'todas' && !busca.trim() && !maxPreco && list.length >= 3;
+    const showHero = catAtiva === 'todas' && !busca.trim() && list.length >= 3;
     if (!showHero) { heroEl.innerHTML = ''; return; }
 
     const top3 = [...list].sort((a, b) => (b.desconto||0) - (a.desconto||0)).slice(0, 3);
@@ -1435,18 +1334,17 @@
 
     let list = all;
 
-    if (catAtiva !== 'todas') list = list.filter(o => o.categoria === catAtiva);
+    if (catAtiva !== 'todas') list = list.filter(o => o.marketplace === catAtiva);
     if (busca.trim()) {
       const q = busca.toLowerCase();
       list = list.filter(o =>
         (o.titulo || '').toLowerCase().includes(q) ||
+        (o.marketplace || '').toLowerCase().includes(q) ||
         (o.categoria || '').toLowerCase().includes(q)
       );
     }
-    if (maxPreco) list = list.filter(o => o.preco_promocional <= maxPreco);
 
     list = sortList(list);
-    document.getElementById('stat-count').textContent = list.length;
 
     renderHero(list);
 
@@ -1457,8 +1355,8 @@
           <div class="state-ico">${empty ? '🛒' : '🔍'}</div>
           <h2>${empty ? 'Nenhuma oferta disponível' : 'Nenhum resultado encontrado'}</h2>
           <p>${empty
-            ? 'As ofertas aparecem aqui assim que são enviadas ao WhatsApp.'
-            : 'Tente buscar por outro termo, remova os filtros ou selecione outra categoria.'}</p>
+            ? 'As ofertas aparecem aqui assim que são publicadas.'
+            : 'Tente buscar por outro termo ou selecione outro marketplace.'}</p>
         </div>`;
       document.getElementById('pagination').innerHTML = '';
       return;
@@ -1496,19 +1394,10 @@
 
   /* ── FETCH ── */
   async function fetchOfertas() {
-    resetCountdown();
     try {
       const res = await fetch(`${API}/api/public/ofertas?limit=100`);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
-
-      // Detecta novas ofertas
-      if (prevIds.size > 0) {
-        const novos = data.filter(o => !prevIds.has(o.id));
-        if (novos.length > 0)
-          showToast(`🔥 ${novos.length} nova${novos.length > 1 ? 's' : ''} oferta${novos.length > 1 ? 's' : ''}!`);
-      }
-      prevIds = new Set(data.map(o => o.id));
 
       all = data;
       saveCache(all);
@@ -1516,10 +1405,6 @@
       renderFooterCats();
       if (abaAtiva === 'ofertas') render();
 
-      const agora = new Date().toLocaleTimeString('pt-BR', {
-        hour: '2-digit', minute: '2-digit', second: '2-digit'
-      });
-      document.getElementById('stat-time').textContent = agora;
       document.getElementById('live-text').textContent = 'Ao vivo';
       document.getElementById('live-dot').className = 'live-dot active';
 
@@ -1528,31 +1413,16 @@
       document.getElementById('live-text').textContent = 'Sem conexão';
       document.getElementById('live-dot').className = 'live-dot error';
 
-      if (firstLoad && abaAtiva === 'ofertas') {
+      if (abaAtiva === 'ofertas') {
         document.getElementById('content').innerHTML = `
           <div class="state">
             <div class="state-ico">⚠️</div>
             <h2>Não foi possível carregar as ofertas</h2>
-            <p>Não foi possível conectar ao servidor.<br>
-               Clique em 🔄 para tentar novamente.</p>
+            <p>Recarregue a página para tentar novamente.</p>
           </div>`;
       }
     }
-    firstLoad = false;
   }
-
-  /* ── COUNTDOWN ── */
-  function resetCountdown() {
-    countdown = INTERVAL;
-    if (timer) clearInterval(timer);
-    timer = setInterval(() => {
-      countdown--;
-      document.getElementById('countdown').textContent = `${countdown}s`;
-      if (countdown <= 0) { clearInterval(timer); fetchOfertas(); }
-    }, 1000);
-  }
-
-  document.getElementById('refresh-btn').addEventListener('click', fetchOfertas);
 
   /* ── INIT ── */
   const cached = loadCache();
@@ -1565,7 +1435,7 @@
   }
   fetchOfertas();
 
-  /* ── RESIZE: recalcula PER_PAGE quando o grid muda de largura ── */
+  /* ── RESIZE ── */
   let resizeTimeout;
   const resizeObs = new ResizeObserver(() => {
     clearTimeout(resizeTimeout);
