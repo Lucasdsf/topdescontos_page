@@ -191,6 +191,26 @@
       box-shadow: 0 0 0 3px rgba(249,115,22,0.08);
     }
 
+    .search-clear {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-muted);
+      font-size: 13px;
+      line-height: 1;
+      padding: 4px 5px;
+      border-radius: 50%;
+      display: none;
+      transition: color 0.15s, background 0.15s;
+    }
+    .search-clear:hover { color: var(--text); background: rgba(255,255,255,0.08); }
+    .search-clear.visible { display: flex; align-items: center; justify-content: center; }
+    .search-wrap.has-value input { padding-right: 34px; }
+
     .header-right {
       display: flex;
       align-items: center;
@@ -919,6 +939,7 @@
         <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
       </svg>
       <input id="search" type="text" placeholder="Buscar produto…" autocomplete="off" />
+      <button class="search-clear" id="search-clear" type="button" title="Limpar busca">✕</button>
     </div>
 
     <div class="header-right">
@@ -1136,9 +1157,25 @@
   });
 
   /* ── SEARCH ── */
+  function syncSearchClear(val) {
+    const hasVal = val.length > 0;
+    document.getElementById('search-clear').classList.toggle('visible', hasVal);
+    document.getElementById('search-wrap').classList.toggle('has-value', hasVal);
+  }
+
   document.getElementById('search').addEventListener('input', e => {
     busca = e.target.value;
+    syncSearchClear(busca);
     if (abaAtiva === 'ofertas') render(true);
+  });
+
+  document.getElementById('search-clear').addEventListener('click', () => {
+    const input = document.getElementById('search');
+    input.value = '';
+    busca = '';
+    syncSearchClear('');
+    if (abaAtiva === 'ofertas') render(true);
+    input.focus();
   });
 
   /* ── MARKETPLACE PILLS ── */
