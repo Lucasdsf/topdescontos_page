@@ -1403,6 +1403,28 @@
       </div>`;
   }
 
+  /* ── MARKETPLACE NORMALIZER ── */
+  function normalizeMarketplace(o) {
+    const m = (o.marketplace || '').toLowerCase().trim();
+    const link = (o.link_afiliado || o.link || '').toLowerCase();
+    if (m === 'magazine_luiza' || m === 'magalu') return 'Magazine Luiza';
+    if (m === 'mercado livre' || m === 'mercado_livre' || m === 'ml') return 'Mercado Livre';
+    if (m === 'netshoes') return 'Netshoes';
+    if (m === 'amazon') return 'Amazon';
+    if (m === 'manual' || !m) {
+      if (link.includes('magazineluiza.com.br') || link.includes('magalu.com.br')) return 'Magazine Luiza';
+      if (link.includes('mercadolivre.com.br') || link.includes('mercadolibre.com')) return 'Mercado Livre';
+      if (link.includes('netshoes.com.br')) return 'Netshoes';
+      if (link.includes('amazon.com.br') || link.includes('amzn.to')) return 'Amazon';
+      return o.categoria || 'Outros';
+    }
+    return o.marketplace.charAt(0).toUpperCase() + o.marketplace.slice(1);
+  }
+
+  function normalizeAll(data) {
+    return data.map(o => ({ ...o, marketplace: normalizeMarketplace(o) }));
+  }
+
   /* ── FETCH ── */
   async function fetchOfertas() {
     try {
@@ -1410,7 +1432,7 @@
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
 
-      all = data;
+      all = normalizeAll(data);
       saveCache(all);
       renderCats();
       renderFooterCats();
@@ -1434,7 +1456,7 @@
   /* ── INIT ── */
   const cached = loadCache();
   if (cached && cached.length > 0) {
-    all = cached;
+    all = normalizeAll(cached);
     renderCats();
     showSkeleton();
   } else {
